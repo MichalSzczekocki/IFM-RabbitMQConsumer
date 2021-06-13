@@ -10,13 +10,37 @@ using System.Data;
 using System.Drawing;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
+using Messaging.Core.Models;
+
+using Microsoft.IdentityModel.JsonWebTokens;
 
 namespace Messaging.Core
 {
     class Program
     {
+        void addUserToDB(string user_id, string username, string password, string publickey, MySqlConnection con)
+        {
+            string query = "INSERT INTO tbl_user";
+            query += "VALUES (@user_id, @username, @password, @public_key)";
+            MySqlCommand cmd = new MySqlCommand(query, con);
+            cmd.Parameters.AddWithValue("@user_id", user_id);
+            cmd.Parameters.AddWithValue("@username", username);
+            cmd.Parameters.AddWithValue("@password", password);
+            cmd.Parameters.AddWithValue("@public_key", publickey);
+        }
+
         static void Main(string[] args)
         {
+            ConnectionFactory factory = new ConnectionFactory();
+            factory.Uri = new Uri("ampq://admin:medical-pass@77.55.208.10:5672");
+            string exchange = "";
+            string queue = "";
+            string rKey = "";
+            string type = "";
+            bool d = true;
+
+            RabbitConfiguration rmqConnection = new RabbitConfiguration(factory, exchange, rKey, type, d, queue);
+
             Console.WriteLine("");
 
             try
