@@ -18,15 +18,14 @@ namespace Messaging.Core
 {
     class Program
     {
-        void addUserToDB(string user_id, string username, string password, string publickey, MySqlConnection con)
+        void addUserSleepDataToDB(string user_id, string sleep_data_id, string sleep_data, MySqlConnection con)
         {
-            string query = "INSERT INTO tbl_user";
-            query += "VALUES (@user_id, @username, @password, @public_key)";
+            string query = "INSERT INTO tbl_user_sleep_data";
+            query += "VALUES (@user_id, @sleep_data_id, @sleep_data)";
             MySqlCommand cmd = new MySqlCommand(query, con);
             cmd.Parameters.AddWithValue("@user_id", user_id);
-            cmd.Parameters.AddWithValue("@username", username);
-            cmd.Parameters.AddWithValue("@password", password);
-            cmd.Parameters.AddWithValue("@public_key", publickey);
+            cmd.Parameters.AddWithValue("@sleep_data_id", sleep_data_id);
+            cmd.Parameters.AddWithValue("@sleep_data", sleep_data);
         }
 
         static void Main(string[] args)
@@ -34,7 +33,7 @@ namespace Messaging.Core
             ConnectionFactory factory = new ConnectionFactory();
             factory.Uri = new Uri("ampq://admin:medical-pass@77.55.208.10:5672");
             string exchange = "";
-            string queue = "";
+            string queue = "Smartwatch";
             string rKey = "";
             string type = "";
             bool d = true;

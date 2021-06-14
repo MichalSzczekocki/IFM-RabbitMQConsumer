@@ -175,6 +175,7 @@
     <Compile Include="Interfaces\IRabbitMessageHandler.cs" />
     <Compile Include="Interfaces\IRabbitPublisher.cs" />
     <Compile Include="Interfaces\IRabbitPublisherSetup.cs" />
+    <Compile Include="JWTAuthentication.cs" />
     <Compile Include="MessagingCoreModule.cs" />
     <Compile Include="Models\DefaultRabbitConsumer.cs" />
     <Compile Include="Models\DefaultRabbitPublisher.cs" />
