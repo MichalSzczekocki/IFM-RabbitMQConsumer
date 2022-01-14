@@ -49,9 +49,9 @@ Zespół wizualizacji danych i afektywnych interfejsów użytkownika
 
 |          |     |
 | -------- | --- |
-| Imię     |     |
-| Nazwisko |     |
-| Index    |     |
+| Imię     | Michał    |
+| Nazwisko | Szczekocki    |
+| Index    | 239714    |
 
 ## Semestr Obrony pracy
 
